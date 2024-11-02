@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"> <!-- Custom CSS -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_users') }}"><i class="fas fa-user-friends"></i> Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}"><i class="fas fa-sign-out-alt"></i> attendance</a></li>                
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_admin') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 6pc; background-color: transparent; box-shadow: none;">
+        <h1 class="text-center" style="color: aliceblue; margin-bottom: 3pc;">Attendance Management</h1>
+
+        <div class="card-deck">
+            <!-- Card for Marking Attendance -->
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Select a Course to Mark Attendance</h5>
+                    <select id="courseSelect" class="form-control">
+                        <option value="" disabled selected>Select a course</option>
+                        {% for course in courses %}
+                        <option value="{{ course.crs_id }}">{{ course.c_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="submitCourse" class="btn btn-primary mt-3">Proceed</button>
+                </div>
+            </div>
+
+            <!-- Card for Viewing Attendance Report -->
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">View Attendance Report</h5>
+                    <select id="reportCourseSelect" class="form-control">
+                        <option value="" disabled selected>Select a course</option>
+                        {% for course in courses %}
+                        <option value="{{ course.crs_id }}">{{ course.c_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="viewReport" class="btn btn-info mt-3">View Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 <a href="#">AL Madina Academy</a>. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.getElementById('submitCourse').onclick = function () {
+            var selectedCourse = document.getElementById('courseSelect').value;
+            if (selectedCourse) {
+                window.location.href = "/mark_attendance/" + selectedCourse;
+            } else {
+                alert('Please select a course.');
+            }
+        }
+
+        document.getElementById('viewReport').onclick = function () {
+            var selectedReportCourse = document.getElementById('reportCourseSelect').value;
+            if (selectedReportCourse) {
+                window.location.href = "/attendance_report?course_id=" + selectedReportCourse;
+            } else {
+                alert('Please select a course to view the report.');
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

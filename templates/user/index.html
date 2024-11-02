@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        {% if session['logged_in'] %}
+        <div class="profile-icon" onclick="toggleSidebar()">
+            <i class="fas fa-user" style="font-size: 30px;"></i>
+        </div>
+        <div class="profile-sidebar" id="profileSidebar">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="toggleSidebar()">&#10005;</span>
+
+            <!-- Profile Information -->
+            <div class="profile-details text-center">
+                <img src="https://via.placeholder.com/80" class="rounded-circle mb-3" alt="Profile Picture">
+                <h4>{{ session['username'] }}</h4>
+                <p>Email: {{ session['email'] }}</p>
+                <p>Member since: {{ session['member_since'] }}</p>
+
+                <!-- Dashboard Link -->
+                <div class="dashboard-link mt-4">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-block">Go to Dashboard</a>
+                </div>
+
+                <!-- Logout Button -->
+                <div class="logout-link mt-2">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-danger btn-block">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL
+            Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Courses
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('arabic_courses') }}">Arabic Course</a>
+                        <a class="dropdown-item" href="{{ url_for('fashion') }}">Fashion Designing Course</a>
+                        <a class="dropdown-item" href="{{ url_for('nikha') }}">Nikah Essentials</a>
+                        <a class="dropdown-item" href="{{ url_for('digital') }}">Digital Courses</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login/Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <!-- Banner -->
+    <div class="jumbotron">
+        <div class="jumbotron-content animate">
+            <h1>Welcome to AL Madina Academy</h1>
+            <p>Empowering young minds through Arabic and creative courses. Join us to explore the world of knowledge and
+                creativity!</p>
+        </div>
+        <div class="animation-lines"></div> <!-- Div for animative lines -->
+    </div>
+
+    <!-- Courses Section -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="card-img-top"
+                        alt="Arabic Courses">
+                    <div class="card-body">
+                        <h5 class="card-title">Arabic Courses</h5>
+                        <p class="card-text">Explore our Arabic language courses for all ages.</p>
+                        <a href="arabic_courses.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="card-img-top"
+                        alt="Fashion Designing">
+                    <div class="card-body">
+                        <h5 class="card-title">Fashion Designing</h5>
+                        <p class="card-text">Learn creative fashion design from experienced instructors.</p>
+                        <a href="{{ url_for('fashion') }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="card-img-top"
+                        alt="Nikah Essentials">
+                    <div class="card-body">
+                        <h5 class="card-title">Nikah Essentials</h5>
+                        <p class="card-text">Understand the essential aspects of Nikah in Islam.</p>
+                        <a href="{{ url_for('nikha') }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer style="background-color: #343a40; color: white; padding: 40px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Column 1: Connect with Us -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" />
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" />
+                        </a>
+                        <a href="#" class="social-icon" title="WhatsApp">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Services We Provide -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Services We Provide</h5>
+                    <ul class="list-unstyled">
+                        <li>🕒 Flexible Timing</li>
+                        <li>👥 Friendly Staff</li>
+                        <li>💵 Affordable Fees</li>
+                        <li>🌐 Online/Offline Classes</li>
+                        <li>🌍 No Language Barrier</li>
+                        <li>👩‍🏫 Female Staff for Girls</li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Us By -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Contact Us By</h5>
+                    <p>📞 Phone: (123) 456-7890</p>
+                    <p>✉️ Email: info@almadinaacademy.com</p>
+                    <p>💬 WhatsApp: (123) 456-7890</p>
+                    <p>🏠 Address: 123 Academy Lane, City, State, ZIP</p>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center mt-4">
+                <p style="opacity: 0.7;">&copy; 2023 AL Madina Academy. All rights reserved. | Website created by <a
+                        href="http://linkedin.com/in/mubbassir-khan-jahagirdar-081715271" class="text-white"
+                        target="_blank">Khan</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const jumbotronContent = document.querySelector('.jumbotron-content');
+            jumbotronContent.classList.add('animate');
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('profileSidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        window.onscroll = function () {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.body.classList.add("scrolled");
+            } else {
+                document.body.classList.remove("scrolled");
+            }
+        };
+    </script>
+
+</body>
+
+</html>

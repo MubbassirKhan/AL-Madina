@@ -1,0 +1,609 @@
+/* Color Variables */
+:root {
+    --primary-blue: #0066fe;
+    /* Adjust as needed for a suitable blue */
+    --light-green: #88ed9f;
+    /* Light Green */
+    --white: #ffffff;
+    /* White */
+    --black: #000000;
+    /* Black */
+    --sky-blue: #87ceeb;
+    /* Sky Blue */
+}
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+html, body {
+    height: 100%; /* Ensure full height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+    position: fixed; /* Keep the body fixed */
+    width: 100%; /* Ensure full width */
+}
+
+/* Animation Styles */
+@keyframes slideInUp {
+    0% {
+        transform: translateY(30px);
+        /* Start 30px below */
+        opacity: 0;
+        /* Start fully transparent */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* End at the original position */
+        opacity: 2;
+        /* End fully opaque */
+    }
+}
+
+.jumbotron-content {
+    animation: slideInUp 1s ease forwards;
+    /* Apply animation */
+}
+
+
+/* Navbar Customization */
+/* Navbar Customization */
+.navbar {
+    background-color: var(--primary-blue);
+    /* Use primary blue for the navbar background */
+    position: sticky;
+    /* Make the navbar sticky */
+    top: 0;
+    /* Stick to the top */
+    z-index: 1000;
+    /* Ensure it's above other content */
+    width: 100%;
+    /* Full width */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color */
+}
+
+.navbar {
+    position: sticky; /* Or fixed if you want it sticky */
+    z-index: 1000; /* Ensure navbar is on top */
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--white) !important;
+    /* Use white for the text */
+}
+
+.nav-link:hover {
+    color: var(--light-green) !important;
+    /* Light green on hover */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        /* Center align nav items on mobile */
+        width: 100%;
+        /* Full width for nav items */
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        /* Make nav items full width for better touch area */
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px;
+        /* Add some padding for better spacing */
+        display: block;
+        /* Stack links vertically */
+    }
+
+    .card {
+        margin-top: 2pc;
+    }
+}
+
+/* Hover Effect for Nav Links */
+.nav-link {
+    position: relative;
+    color: var(--white) !important;
+    /* Ensure text color is white */
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    /* Smooth scaling and color transition */
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: var(--light-green);
+    /* Change background to light green on hover */
+    color: var(--primary-blue) !important;
+    /* Set text color to primary blue on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge the link on hover */
+}
+
+/* Optional: Underline Effect on Hover */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--sky-blue);
+    /* Sky blue underline */
+    transform: scaleX(0);
+    /* Start with no underline */
+    transition: transform 0.3s ease;
+    /* Smooth transition for underline */
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    /* Animate underline on hover */
+}
+
+/* Trigger dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* optional: adjust if necessary */
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.3s;
+}
+
+.nav-item.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg); /* Rotate arrow on hover */
+}
+
+/* Optional: Styling for the dropdown items on hover */
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #0056b3;
+}
+
+/* Jumbotron Styling */
+.jumbotron {
+    background-image: url('../images/Hero.jpg');
+    /* Your banner image */
+    background-size: contain;
+    /* Ensures the entire image is visible */
+    background-repeat: no-repeat;
+    /* Prevents repeating the image */
+    background-position: center;
+    /* Centers the image */
+    height: 400px;
+    /* Adjust this height as needed */
+    color: var(--white);
+    text-shadow: 2px 2px 4px var(--black);
+    /* Shadow for contrast */
+}
+
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+    /* Prevent overflow from moving elements */
+    background-image: url('../images/Hero.jpg');
+    /* Your banner image */
+    background-size: cover;
+    /* Cover the area */
+    background-position: top;
+    /* Move the image down by 10px */
+    height: 42pc;
+    /* Adjust as needed */
+    color: var(--white);
+    text-shadow: 2px 2px 4px var(--black);
+    /* Shadow for contrast */
+}
+
+.jumbotron::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    /* Position at the top of the jumbotron */
+    left: 0;
+    /* Position at the left of the jumbotron */
+    right: 0;
+    /* Extend to the right */
+    bottom: 0;
+    /* Extend to the bottom */
+    background: rgba(0, 0, 0, 0.1);
+    /* Semi-transparent black background */
+    backdrop-filter: blur(8px);
+    /* Add blur effect */
+    z-index: 0;
+    /* Position behind the content */
+}
+
+
+@keyframes slide {
+    0% {
+        background-position: left;
+        /* Start position */
+    }
+
+    100% {
+        background-position: right;
+        /* End position */
+    }
+}
+
+.jumbotron-content {
+    position: relative;
+    /* Position relative to allow absolute positioning of child elements */
+    z-index: 1;
+    /* Ensure content is above the background */
+    padding: 20px;
+    /* Add padding for spacing */
+}
+
+.jumbotron h1 {
+    font-size: 3rem;
+}
+
+.jumbotron p {
+    font-size: 1.25rem;
+}
+
+/* Card Styling */
+.card {
+    /* height: 30pc; */
+    padding: 2pc;
+    border-radius: 10px;
+    /* Round corners */
+    overflow: hidden;
+    /* Prevent overflow of content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth scaling and shadow transition */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge the card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    /* Add shadow effect */
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    /* Transition for the image */
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    /* Enlarge the image on hover */
+}
+
+.card-title {
+    color: var(--primary-blue);
+    /* Primary blue for card titles */
+    font-weight: bold;
+    transition: color 0.3s ease;
+    /* Transition for color change */
+}
+
+
+.card-text {
+    font-size: 1rem;
+    /* Set a comfortable font size for the text */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Button transition */
+}
+
+.btn-primary:hover {
+    background-color: var(--sky-blue);
+    border-color: var(--sky-blue);
+    transform: translateY(-3px);
+    /* Slightly lift the button on hover */
+}
+
+.card {
+    animation: bounce 1s ease infinite;
+    /* Apply bounce animation */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Jumbotron Styling */
+.fasion {
+    background-image: url('../images/fashion_hero.jpg');
+    /* Your banner image */
+    background-size: contain;
+    /* Ensures the entire image is visible */
+    background-repeat: no-repeat;
+    /* Prevents repeating the image */
+    background-position: center;
+    /* Centers the image */
+    height: 400px;
+    /* Adjust this height as needed */
+    color: var(--primary-blue);
+    text-align: center;
+    text-shadow: 1px 1px 2px var(--black);
+    /* Shadow for contrast */
+}
+.fasion-content {
+    animation: slideInUp 1s ease forwards;
+    /* Apply animation */
+}
+
+.fashion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    /* Position at the top of the jumbotron */
+    left: 0;
+    /* Position at the left of the jumbotron */
+    right: 0;
+    /* Extend to the right */
+    bottom: 0;
+    /* Extend to the bottom */
+    background: rgba(0, 0, 0, 1.5);
+    /* Semi-transparent black background */
+    backdrop-filter: blur(8px);
+    /* Add blur effect */
+    z-index: 0;
+    /* Position behind the content */
+}
+
+.fasion-content {
+    position: relative;
+    /* Position relative to allow absolute positioning of child elements */
+    z-index: 1;
+    /* Ensure content is above the background */
+    padding: 1px;
+    /* Add padding for spacing */
+    font-style: oblique;
+}
+
+.fashion h1 {
+    font-size: 5rem;
+}
+
+.fashion p {
+    font-size: 1.25rem;
+}
+
+.course-header {
+    background-color: #007bff;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.course-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.course-details {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: 0.5s;
+}
+
+.course-details h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.highlight {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.enroll-info {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: #e9f7ff;
+    border-left: 5px solid #007bff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.btn-primary, .btn-secondary {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .course-header h1 {
+        font-size: 2rem;
+    }
+
+    .course-details h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.footer-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-heading:after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 50px;
+    background-color: #007bff;
+    margin: 10px auto 0;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    margin: 0 15px;
+    display: inline-block;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.services li, .contact-info p {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    margin: 10px 0;
+}
+
+.services li:nth-child(1), .contact-info p:nth-child(1) { animation-delay: 0.2s; }
+.services li:nth-child(2), .contact-info p:nth-child(2) { animation-delay: 0.4s; }
+.services li:nth-child(3), .contact-info p:nth-child(3) { animation-delay: 0.6s; }
+.services li:nth-child(4), .contact-info p:nth-child(4) { animation-delay: 0.8s; }
+.services li:nth-child(5), .contact-info p:nth-child(5) { animation-delay: 1s; }
+.services li:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-bottom p {
+    margin: 15px 0;
+    font-size: 0.9rem;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-delay: 1.4s; /* Delay for footer text */
+}
+
+.profile-icon {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+    background-color: #606265;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Sidebar styling */
+.profile-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Hide off-screen initially */
+    width: 300px;
+    height: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    transition: left 0.5s ease;
+    z-index: 999;
+}
+
+.profile-sidebar.active {
+    left: 0; /* Slide in */
+}
+
+/* Sidebar contents */
+.profile-details h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.profile-details p {
+    margin: 0;
+    color: #ddd;
+}
+.dashboard-link {
+    margin-top: 20px;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    cursor: pointer;
+}

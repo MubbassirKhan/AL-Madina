@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spoken Arabic Course - AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        <a class="navbar-brand" href="#">AL Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('arabic_courses') }}">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login/Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header">
+        <h1>Spoken Arabic Course</h1>
+    </div>
+
+    <!-- Course Details -->
+    <div class="container course-details">
+        <h2>Course Overview</h2>
+        <p>Enhance your conversational skills in Arabic through structured lessons and immersive practice sessions. Our Spoken Arabic course is designed for learners at all levels, enabling them to communicate effectively in various everyday situations.</p>
+
+        <h3>What You Will Learn</h3>
+        <ul>
+            <li>Basic conversational phrases and vocabulary</li>
+            <li>Pronunciation and accent improvement</li>
+            <li>Role-playing real-life scenarios</li>
+            <li>Listening and comprehension skills</li>
+            <li>Cultural nuances and etiquette in conversations</li>
+        </ul>
+
+        <h3>Course Duration and Fees</h3>
+        <p><span class="highlight">Duration:</span> 3 Months (12 Weeks)</p>
+        <p><span class="highlight">Fees:</span> $300</p>
+        <p>Upon successful completion, a certificate will be awarded to participants.</p>
+
+        <h3>Enrollment Information</h3>
+        <p>Enroll in our Spoken Arabic course today! This is an offline course available at our academy.</p>
+        
+        <div class="enroll-info">
+            <p>To book your spot:</p>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#bookingModal">Book Online</button>
+            <button class="btn btn-secondary" data-toggle="modal" data-target="#locationModal">Visit Us</button>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingModalLabel">Book Your Course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">Payment Method</label>
+                            <select class="form-control" id="payment" required>
+                                <option value="" disabled selected>Select Payment Method</option>
+                                <option value="gpay">Google Pay</option>
+                                <option value="phonepay">PhonePe</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Modal -->
+    <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="locationModalLabel">Visit Us</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Address:</h5>
+                    <p>AL Madina Academy</p>
+                    <p>123 Academy Lane, City, State, ZIP</p>
+                    <h5>Contact Info:</h5>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: info@almadinaacademy.com</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #343a40; color: white; padding: 40px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Column 1: Connect with Us -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="WhatsApp">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Column 2: Services We Provide -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Services We Provide</h5>
+                    <ul class="list-unstyled">
+                        <li>🕒 Flexible Timing</li>
+                        <li>👥 Friendly Staff</li>
+                        <li>💵 Affordable Fees</li>
+                        <li>🌐 Online/Offline Classes</li>
+                        <li>🌍 No Language Barrier</li>
+                        <li>👩‍🏫 Female Staff for Girls</li>
+                    </ul>
+                </div>
+    
+                <!-- Column 3: Contact Us By -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Contact Us By</h5>
+                    <p>📞 Phone: (123) 456-7890</p>
+                    <p>✉️ Email: info@almadinaacademy.com</p>
+                    <p>💬 WhatsApp: (123) 456-7890</p>
+                    <p>🏠 Address: 123 Academy Lane, City, State, ZIP</p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center mt-4">
+                <p style="opacity: 0.7;">&copy; 2023 AL Madina Academy. All rights reserved. | Website created by <a href="http://linkedin.com/in/mubbassir-khan-jahagirdar-081715271" class="text-white" target="_blank">Khan</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

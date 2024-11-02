@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"> <!-- Custom CSS -->
+    <style>
+        .footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            /* Light background for footer */
+        }
+
+        .tick {
+            display: none;
+            /* Hide tick mark by default */
+            color: green;
+            /* Change color to green */
+            font-size: 20px;
+            /* Increase size for visibility */
+            margin-left: 10px;
+            /* Space between button and tick */
+        }
+
+        .status {
+            margin-left: 10px;
+            /* Space between the tick and status */
+            font-weight: bold;
+            /* Make status text bold */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i>
+                        Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_courses') }}"><i
+                            class="fas fa-book"></i> Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_users') }}"><i
+                            class="fas fa-user-friends"></i> Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}"><i
+                            class="fas fa-sign-out-alt"></i> Attendance</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_admin') }}"><i
+                            class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Mark Attendance for Course: {{ course_name }}</h1>
+        <div class="text-center mb-3">
+            <a href="{{ url_for('attendance_report', course_id=course_id) }}" class="btn btn-secondary">View
+                Attendance</a>
+            <a href="{{ url_for('view_attendance', course_id=course_id) }}" class="btn btn-secondary"><i
+                    class="fas fa-eye"></i> View Attendance (Date Wise)</a>
+        </div>
+        <form method="POST" id="attendanceForm">
+            <input type="hidden" name="course_id" value="{{ course_id }}">
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <div class="table-responsive"> <!-- Make the table responsive -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if students %}
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ student.name }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success"
+                                    onclick="markAttendance({{ student.student_id }}, 'present', this)">P</button>
+                                <button type="button" class="btn btn-danger"
+                                    onclick="markAttendance({{ student.student_id }}, 'absent', this)">A</button>
+                                <span class="tick" id="tick_{{ student.student_id }}">✔️</span>
+                                <span class="status" id="status_{{ student.student_id }}"></span>
+                                <!-- Status indicator -->
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="2">No students found for this course.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit Attendance</button>
+                <button type="button" class="btn btn-warning" onclick="clearAttendanceMarks()">Clear Attendance Marks</button>
+
+            </div>            
+        </form>
+
+    </div>
+
+    <div class="footer">
+        <p class="text-center">&copy; 2024 <a href="#">AL Madina Academy</a>. All rights reserved.</p>
+    </div>
+
+    <script>
+        function markAttendance(studentId, status, button) {
+            // Create a hidden input to hold the student's attendance
+            var attendanceInput = document.createElement("input");
+            attendanceInput.type = "hidden";
+            attendanceInput.name = "attendance";
+            attendanceInput.value = studentId + ":" + status; // Format: studentId:status
+
+            // Append to the form
+            document.getElementById("attendanceForm").appendChild(attendanceInput);
+
+            // Show the tick mark
+            const tickElement = document.getElementById("tick_" + studentId);
+            tickElement.style.display = "inline";
+
+            // Update the status text
+            const statusElement = document.getElementById("status_" + studentId);
+            statusElement.textContent = status.charAt(0).toUpperCase(); // Display P or A
+        }
+
+        function clearAttendanceMarks() {
+            const ticks = document.querySelectorAll('.tick');
+            const statuses = document.querySelectorAll('.status');
+
+            ticks.forEach(tick => {
+                tick.style.display = "none"; // Hide the tick marks
+            });
+
+            statuses.forEach(status => {
+                status.textContent = ""; // Clear the status text
+            });
+
+            // Optionally, remove hidden inputs for attendance (if necessary)
+            const attendanceInputs = document.querySelectorAll("input[name='attendance']");
+            attendanceInputs.forEach(input => {
+                input.remove(); // Remove attendance inputs if they exist
+            });
+        }
+
+    </script>
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

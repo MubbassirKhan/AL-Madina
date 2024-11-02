@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        <a class="navbar-brand" href="#">AL Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Courses
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('arabic_courses') }}">Arabic Course</a>
+                        <a class="dropdown-item" href="{{ url_for('fashion') }}">Fashion Designing Course</a>
+                        <a class="dropdown-item" href="{{ url_for('nikha') }}">Nikah Essentials</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login/Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="fasion">
+        <div class="fasion-content">
+            <h1 class="fashion-content">Fashion Designing Course</h1>
+            <p class="fashion-content">Unleash your creativity and learn the art of fashion design. Our courses cover everything from sketching to sewing.</p>
+        </div>
+    </div>
+
+    <!-- Course Details Section -->
+    <section class="container my-5">
+        <h2>Course Overview</h2>
+        <p>At AL Madina Academy, we offer comprehensive fashion designing courses tailored for aspiring designers. You will learn:</p>
+        <ul>
+            <li>Fundamentals of fashion design</li>
+            <li>Textile knowledge</li>
+            <li>Sewing techniques</li>
+            <li>Fashion illustration and sketching</li>
+            <li>Understanding trends and market research</li>
+        </ul>
+        <p>Join us to start your journey in the world of fashion!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #343a40; color: white; padding: 40px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Column 1: Connect with Us -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="WhatsApp">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Column 2: Services We Provide -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Services We Provide</h5>
+                    <ul class="list-unstyled">
+                        <li>🕒 Flexible Timing</li>
+                        <li>👥 Friendly Staff</li>
+                        <li>💵 Affordable Fees</li>
+                        <li>🌐 Online/Offline Classes</li>
+                        <li>🌍 No Language Barrier</li>
+                        <li>👩‍🏫 Female Staff for Girls</li>
+                    </ul>
+                </div>
+    
+                <!-- Column 3: Contact Us By -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Contact Us By</h5>
+                    <p>📞 Phone: (123) 456-7890</p>
+                    <p>✉️ Email: info@almadinaacademy.com</p>
+                    <p>💬 WhatsApp: (123) 456-7890</p>
+                    <p>🏠 Address: 123 Academy Lane, City, State, ZIP</p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center mt-4">
+                <p style="opacity: 0.7;">&copy; 2023 AL Madina Academy. All rights reserved. | Website created by <a href="http://linkedin.com/in/mubbassir-khan-jahagirdar-081715271" class="text-white" target="_blank">Khan</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const jumbotronContent = document.querySelector('.jumbotron-content');
+            jumbotronContent.classList.add('animate');
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

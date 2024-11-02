@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+</head>
+<style>
+    .learning-quran-container {
+        padding: 2rem;
+        background-color: rgba(233, 229, 229, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 1s ease-in-out forwards;
+    }
+
+    .section-heading {
+        font-size: 2.5rem;
+        text-align: center;
+        color: #0073e6;
+        margin-bottom: 1rem;
+    }
+
+    .sub-heading {
+        font-size: 1.8rem;
+        color: #0059b3;
+        margin-top: 1.5rem;
+    }
+
+    .content {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .learning-quran-container {
+            padding: 1.5rem;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+        }
+
+        .sub-heading {
+            font-size: 1.5rem;
+        }
+
+        .content {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        {% if session['logged_in'] %}
+        <div class="profile-icon" onclick="toggleSidebar()">
+            <i class="fas fa-user" style="font-size: 30px;"></i>
+        </div>
+        <div class="profile-sidebar" id="profileSidebar">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="toggleSidebar()">&#10005;</span>
+
+            <!-- Profile Information -->
+            <div class="profile-details text-center">
+                <img src="https://via.placeholder.com/80" class="rounded-circle mb-3" alt="Profile Picture">
+                <h4>{{ session['username'] }}</h4>
+                <p>Email: {{ session['email'] }}</p>
+                <p>Member since: {{ session['member_since'] }}</p>
+
+                <!-- Dashboard Link -->
+                <div class="dashboard-link mt-4">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-block">Go to Dashboard</a>
+                </div>
+
+                <!-- Logout Button -->
+                <div class="logout-link mt-2">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-danger btn-block">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AL
+            Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Courses
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('arabic_courses') }}">Arabic Course</a>
+                        <a class="dropdown-item" href="{{ url_for('fashion') }}">Fashion Designing Course</a>
+                        <a class="dropdown-item" href="{{ url_for('nikha') }}">Nikah Essentials</a>
+                        <a class="dropdown-item" href="{{ url_for('digital') }}">Digital Courses</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login/Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- Arabic Courses Section -->
+    <div class="container my-5">
+        <div class="fasion-content">
+           
+        </div>
+
+        <div class="learning-quran-container">
+            <h2 class="section-heading">Learn Quran</h2>
+            <p class="content">
+                The Quran, a divine source of wisdom, provides answers to life’s most profound questions, guiding us towards righteousness, compassion, and inner peace. It is a book of timeless knowledge, addressing various aspects of personal growth, ethics, and the purpose of human existence.
+            </p>
+            
+            <h3 class="sub-heading">Why We Should Learn the Quran</h3>
+            <p class="content">
+                Learning the Quran is more than an intellectual journey; it’s a spiritual transformation. It strengthens our connection with Allah and deepens our understanding of His teachings, fostering a sense of purpose and belonging in our lives.
+            </p>
+            
+            <h3 class="sub-heading">Why Choose Us for Your Quranic Journey</h3>
+            <p class="content">
+                At AL Madina Academy, we offer a structured, supportive environment to learn and appreciate the Quran. Our dedicated instructors, tailored resources, and interactive classes help learners connect with the teachings of the Quran in meaningful ways, whether they’re beginning or deepening their understanding.
+            </p>
+            <p class="content">
+                Join us to embark on a transformative journey, where you’ll not only learn to read the Quran but understand its profound wisdom, applying it to enrich your life and strengthen your faith.
+            </p>
+        </div>
+        
+        <BR></BR>
+        <div class="row">
+            <!-- Spoken Arabic -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top"
+                        alt="Spoken Arabic">
+                    <div class="card-body">
+                        <h5 class="card-title">Spoken Arabic</h5>
+                        <p class="card-text">Develop your conversational skills in Arabic through structured lessons and
+                            practice sessions.</p>
+                        <a href="{{ url_for('spoken_arabic') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quran with Tajweed -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top"
+                        alt="Quran with Tajweed">
+                    <div class="card-body">
+                        <h5 class="card-title">Quran with Tajweed</h5>
+                        <p class="card-text">Learn the art of reciting the Quran with proper pronunciation and Tajweed
+                            rules.</p>
+                        <a href="{{ url_for('qurantajweed') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hifz-e-Quran -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top"
+                        alt="Hifz-e-Quran">
+                    <div class="card-body">
+                        <h5 class="card-title">Hifz-e-Quran</h5>
+                        <p class="card-text">A comprehensive memorization program designed to help students learn and
+                            retain the Quran.</p>
+                        <a href="{{ url_for('hifz_quran') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tafseer -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top" alt="Tafseer">
+                    <div class="card-body">
+                        <h5 class="card-title">Tafseer</h5>
+                        <p class="card-text">Dive deep into the meanings and interpretations of the Quran with our
+                            Tafseer course.</p>
+                        <a href="{{ url_for('tafseer') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Course 1 -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top"
+                        alt="Quran for Kids">
+                    <div class="card-body">
+                        <h5 class="card-title">Quran for Kids</h5>
+                        <p class="card-text">An engaging course for young learners to start their journey with the
+                            Quran.</p>
+                        <a href="{{ url_for('quran_kids') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Course 2 -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url_for('static', filename='images/Hero.jpg') }}" class="card-img-top"
+                        alt="Advanced Quran Studies">
+                    <div class="card-body">
+                        <h5 class="card-title">Advanced Quran Studies</h5>
+                        <p class="card-text">For those who wish to deepen their understanding and connection with the
+                            Quran.</p>
+                        <a href="{{ url_for('quran_advance') }}" class="btn btn-primary">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer style="background-color: #343a40; color: white; padding: 40px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Column 1: Connect with Us -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="WhatsApp">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Column 2: Services We Provide -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Services We Provide</h5>
+                    <ul class="list-unstyled">
+                        <li>🕒 Flexible Timing</li>
+                        <li>👥 Friendly Staff</li>
+                        <li>💵 Affordable Fees</li>
+                        <li>🌐 Online/Offline Classes</li>
+                        <li>🌍 No Language Barrier</li>
+                        <li>👩‍🏫 Female Staff for Girls</li>
+                    </ul>
+                </div>
+    
+                <!-- Column 3: Contact Us By -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Contact Us By</h5>
+                    <p>📞 Phone: (123) 456-7890</p>
+                    <p>✉️ Email: info@almadinaacademy.com</p>
+                    <p>💬 WhatsApp: (123) 456-7890</p>
+                    <p>🏠 Address: 123 Academy Lane, City, State, ZIP</p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center mt-4">
+                <p style="opacity: 0.7;">&copy; 2023 AL Madina Academy. All rights reserved. | Website created by <a href="http://linkedin.com/in/mubbassir-khan-jahagirdar-081715271" class="text-white" target="_blank">Khan</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

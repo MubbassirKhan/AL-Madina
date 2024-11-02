@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikah Essentials on Sale - AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+</head>
+
+<style>
+    /* Container for the card section */
+.container {
+    margin-top: 30px;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-radius: 8px 8px 0 0;
+    max-height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Card body for consistency */
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1rem;
+    color: #27ae60;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card img {
+        max-height: 200px;
+    }
+}
+
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        <a class="navbar-brand" href="#">AL Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('arabic_courses') }}">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login/Signup</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="fasion">
+        <div class="fasion-content">
+            <h1 class="fashion-content">Nikha Accesories</h1>
+            <p class="fashion-content">Unleash your creativity and learn the art of fashion design. Our courses cover everything from sketching to sewing.</p>
+        </div>
+    </div>
+
+    <!-- Nikah Essentials Section -->
+    <section class="container my-5">
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah1.jpg') }}" class="card-img-top" alt="Elegant Nikah Gift Set">
+                    <div class="card-body">
+                        <h5 class="card-title">Elegant Nikah Gift Set</h5>
+                        <p class="card-text">A beautiful gift set with premium Nikah essentials for the perfect ceremony.</p>
+                        <p class="price">$70.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah2.jpg') }}" class="card-img-top" alt="Personalized Nikah Rings">
+                    <div class="card-body">
+                        <h5 class="card-title">Personalized Nikah Rings</h5>
+                        <p class="card-text">Customized rings with names and dates to commemorate the special day.</p>
+                        <p class="price">$55.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah3.jpg') }}" class="card-img-top" alt="Traditional Quran Gift Set">
+                    <div class="card-body">
+                        <h5 class="card-title">Traditional Quran Gift Set</h5>
+                        <p class="card-text">A beautifully crafted Quran with a decorative case, perfect for Nikah ceremonies.</p>
+                        <p class="price">$80.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                <br><br><br>
+            </div> 
+    
+            <!-- Product 4 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah4.jpg') }}" class="card-img-top" alt="Luxury Prayer Rug">
+                    <div class="card-body">
+                        <h5 class="card-title">Luxury Prayer Rug</h5>
+                        <p class="card-text">A luxurious and soft prayer rug for newlyweds, adding a spiritual touch.</p>
+                        <p class="price">$45.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 5 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah5.jpg') }}" class="card-img-top" alt="Decorative Nikah Plaque">
+                    <div class="card-body">
+                        <h5 class="card-title">Decorative Nikah Plaque</h5>
+                        <p class="card-text">Engraved plaque with blessings for the couple, ideal for display.</p>
+                        <p class="price">$30.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Product 6 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/nikah6.jpg') }}" class="card-img-top" alt="Custom Nikah Invitation Cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Custom Nikah Invitation Cards</h5>
+                        <p class="card-text">Stylish and customizable invitation cards for a memorable Nikah invitation.</p>
+                        <p class="price">$25.00</p>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer style="background-color: #343a40; color: white; padding: 40px 0;">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Column 1: Connect with Us -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"/>
+                        </a>
+                        <a href="#" class="social-icon" title="WhatsApp">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Column 2: Services We Provide -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Services We Provide</h5>
+                    <ul class="list-unstyled">
+                        <li>🕒 Flexible Timing</li>
+                        <li>👥 Friendly Staff</li>
+                        <li>💵 Affordable Fees</li>
+                        <li>🌐 Online/Offline Classes</li>
+                        <li>🌍 No Language Barrier</li>
+                        <li>👩‍🏫 Female Staff for Girls</li>
+                    </ul>
+                </div>
+    
+                <!-- Column 3: Contact Us By -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Contact Us By</h5>
+                    <p>📞 Phone: (123) 456-7890</p>
+                    <p>✉️ Email: info@almadinaacademy.com</p>
+                    <p>💬 WhatsApp: (123) 456-7890</p>
+                    <p>🏠 Address: 123 Academy Lane, City, State, ZIP</p>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center mt-4">
+                <p style="opacity: 0.7;">&copy; 2023 AL Madina Academy. All rights reserved. | Website created by <a href="http://linkedin.com/in/mubbassir-khan-jahagirdar-081715271" class="text-white" target="_blank">Khan</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

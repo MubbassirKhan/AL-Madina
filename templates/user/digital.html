@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Courses - AL Madina Academy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Custom CSS -->
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-navbar">
+        <a class="navbar-brand" href="#">AL Madina Academy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('arabic_courses') }}">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login/Signin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Digital Courses Header -->
+    <div class="course-header">
+        <h1>Digital Courses</h1>
+    </div>
+
+    <!-- Digital Courses List -->
+    <div class="container my-5">
+        <!-- Content Creation Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="Content Creation" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Content Creation</h5>
+                        <p class="card-text">Learn to create engaging and high-quality content for various digital platforms.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('content_creator') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphic Designing Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="Graphic Designing" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Graphic Designing</h5>
+                        <p class="card-text">Master the basics of design to create stunning visuals and graphics.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 5 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('graphic_design') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filmora Editing Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="Filmora Editing" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Filmora Editing</h5>
+                        <p class="card-text">Enhance your video editing skills with Filmora, creating professional-quality videos.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('content_creator') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Marketing Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="Digital Marketing" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Marketing</h5>
+                        <p class="card-text">Learn the essentials of digital marketing, including SEO, social media, and content strategy.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 8 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('content_creator') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SalesPro / Affiliate Marketing Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="SalesPro / Affiliate Marketing" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">SalesPro / Affiliate Marketing</h5>
+                        <p class="card-text">Explore the fundamentals of affiliate marketing and develop your skills for sales success.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('content_creator') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ads Mastery Card -->
+        <div class="card mb-4" style="width: 80%; margin: auto;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="img-fluid rounded-start" alt="Ads Mastery" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Ads Mastery</h5>
+                        <p class="card-text">Master ad creation, targeting, and optimization for maximum digital impact.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 1 min ago</small></p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <a href="{{ url_for('content_creator') }}" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 AL Madina Academy. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

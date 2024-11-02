@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"> <!-- Custom CSS -->
+</head>
+<body>
+    <!-- Admin Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_users') }}"><i class="fas fa-user-friends"></i> Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}"><i class="fas fa-sign-out-alt"></i> attendance</a></li>                
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_admin') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5" style="background-color: transparent; box-shadow: none;">
+        <div class="text-center mb-4" style="color: aliceblue; font-size: xx-large;">
+            <h1>Welcome, Admin</h1>
+            <p>Manage your content and settings below</p>
+        </div>
+        
+        <!-- Action Cards -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-primary h-100">
+                    <div class="card-body">
+                        <i class="fas fa-book-open fa-3x text-primary"></i>
+                        <h5 class="card-title">Manage Courses</h5>
+                        <p class="card-text">Create, edit, and remove courses offered by the academy.</p>
+                        <a href="{{ url_for('admin_courses') }}" class="btn btn-primary">View Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-success h-100">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-success"></i>
+                        <h5 class="card-title">User Management</h5>
+                        <p class="card-text">View, add, and manage all users and their roles.</p>
+                        <a href="{{ url_for('admin_users') }}" class="btn btn-success">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-warning h-100">
+                    <div class="card-body">
+                        <i class="fas fa-cog fa-3x text-warning"></i>
+                        <h5 class="card-title">Settings</h5>
+                        <p class="card-text">Configure academy settings and profile information.</p>
+                        <a href="{{ url_for('settings') }}" class="btn btn-warning">Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 <a href="#">AL Madina Academy</a>. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

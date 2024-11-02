@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/your/bootstrap.css">
+    <title>User Dashboard</title>
+    <style>
+        /* Basic Reset and Styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #007bff;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Static Progress Circle */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: conic-gradient(#007bff var(--progress), #f3f3f3 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Button -->
+        <a href="/" class="back-btn">← Back to Home</a>
+
+        <h1>User Dashboard</h1>
+
+        <!-- Courses Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Course Name</th>
+                        <th>Total Amount Paid</th>
+                        <th>Current Balance</th>
+                        <th>Transaction Mode</th>
+                        <th>Progress</th>
+                        <th>Course Mode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Course Row 1 -->
+                    <tr>
+                        <td>1</td>
+                        <td>Hifz-e-Quran</td>
+                        <td>$200</td>
+                        <td>$50</td>
+                        <td>Credit Card</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-circle" style="--progress: 75%">75%</div>
+                            </div>
+                        </td>
+                        <td>Online</td>
+                    </tr>
+
+                    <!-- Sample Course Row 2 -->
+                    <tr>
+                        <td>2</td>
+                        <td>Graphic Designing</td>
+                        <td>$300</td>
+                        <td>$150</td>
+                        <td>Debit Card</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-circle" style="--progress: 60%">60%</div>
+                            </div>
+                        </td>
+                        <td>Offline</td>
+                    </tr>
+
+                    <!-- Sample Course Row 3 -->
+                    <tr>
+                        <td>3</td>
+                        <td>Digital Marketing</td>
+                        <td>$100</td>
+                        <td>$0</td>
+                        <td>PayPal</td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-circle" style="--progress: 40%">40%</div>
+                            </div>
+                        </td>
+                        <td>Online</td>
+                    </tr>
+                    <!-- Additional courses can be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="path/to/your/bootstrap.bundle.js"></script>
+</body>
+</html>
