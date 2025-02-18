@@ -7,31 +7,19 @@
     <title>Admin Courses</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}"> -->
     <style>
-        /* Navbar Styling */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        body {
+            background: linear-gradient(135deg, #4e4376, #2b5876);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eee;
+            animation: fadeIn 1s ease forwards;
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
         }
 
-        .navbar-brand {
-            font-weight: bolder;
-            color: #00A7E1;
-        }
-
-        .navbar-nav .nav-link {
-            color: white !important;
-        }
-
-        .nav-link {
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
-        .nav-link:hover {
-            background-color: rgba(0, 167, 225, 0.7);
-            color: #fff;
-            border-radius: 4px;
+        h1 {
+            font-weight: bold;
         }
 
         .course-card-container {
@@ -62,10 +50,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: #00A7E1;
         }
 
         .btn {
+            width: 8pc;
             margin-right: 5px;
         }
 
@@ -91,7 +79,7 @@
         }
 
         .text-right .btn-primary:hover {
-            background: #6a82fb;
+            background: linear-gradient(135deg, #fc5c7d, #6a82fb);
             transform: scale(1.1);
         }
 
@@ -109,68 +97,110 @@
 
         .modal-content {
             background-color: #2c3e50;
+            /* Darker background for the modal */
             color: #ecf0f1;
+            /* Light text color for contrast */
             border-radius: 8px;
+            /* Rounded corners */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            /* Shadow for depth */
         }
 
         .modal-header {
             border-bottom: 2px solid #34495e;
+            /* Distinct border at the bottom */
         }
 
         .modal-title {
             font-size: 1.5rem;
+            /* Larger title font size */
             font-weight: 600;
+            /* Bold title */
             color: #f39c12;
+            /* Bright accent color for the title */
         }
 
         .close {
             color: #ecf0f1;
+            /* Close button color */
+        }
+
+        .modal-body {
+            padding: 20px;
+            /* Increased padding for better spacing */
         }
 
         .form-group label {
             color: #ecf0f1;
+            /* Darker text for labels */
             font-weight: 500;
+            /* Medium weight for labels */
         }
 
         .form-control {
             background-color: #34495e;
+            /* Dark background for input fields */
             color: #ecf0f1;
+            /* Light text color for input */
             border: 1px solid #7f8c8d;
+            /* Light border */
             border-radius: 5px;
+            /* Rounded corners for input fields */
         }
 
         .form-control:focus {
             border-color: #f39c12;
+            /* Bright border color on focus */
             background-color: #2c3e50;
+            /* Maintain background color on focus */
             box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+            /* Subtle glow effect */
         }
 
         .btn-primary {
             background-color: #e67e22;
+            /* Primary button color */
             border-color: #d35400;
+            /* Button border color */
         }
 
         .btn-primary:hover {
             background-color: #d35400;
+            /* Darker color on hover */
             border-color: #c0392b;
+            /* Button border color on hover */
             transform: scale(1.05);
+            /* Slight scaling effect */
         }
 
         .modal-footer {
             border-top: 2px solid #34495e;
+            /* Distinct border at the top of footer */
         }
 
-        .modal-dialog {
-            max-width: 100%;
-            width: 100%;
-            height: auto;
-            margin: 0;
+        .footer {
+            text-align: center;
+            color: #aaa;
+            padding: 1rem 0;
+            font-size: 0.9rem;
         }
 
-        .modal-content {
-            height: auto;
-            overflow-y: auto;
+        .footer a {
+            color: #6a82fb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #a8c0ff;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(0, 167, 225, 0.7);
+            /* Change background color on hover */
+            color: #fff;
+            /* Ensure text remains white on hover */
+            border-radius: 4px;
+            /* Rounded corners for a softer look */
         }
     </style>
 </head>
@@ -178,17 +208,22 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"><i class="fas fa-cogs"></i> Admin Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_courses') }}"><i class="fas fa-book"></i> Courses</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_users') }}"><i class="fas fa-user-friends"></i> Users</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}"><i class="fas fa-sign-out-alt"></i> Attendance</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_admin') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i>
+                        Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_courses') }}"><i
+                            class="fas fa-book"></i> Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_users') }}"><i
+                            class="fas fa-user-friends"></i> Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('attendance') }}"><i
+                            class="fas fa-sign-out-alt"></i> attendance</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_admin') }}"><i
+                            class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -198,7 +233,8 @@
 
         <!-- Add Course Button -->
         <div class="text-right mb-3">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal"><i class="fas fa-plus"></i> Add Course</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal"><i
+                    class="fas fa-plus"></i> Add Course</button>
         </div>
 
         <!-- Course Cards Row -->
@@ -216,11 +252,13 @@
                                     <i class="fas fa-eye"></i> View
                                 </a>
                                 <!-- Edit Course Link -->
-                                <a href="{{ url_for('student_data', course_id=course.crs_id) }}" class="btn btn-warning">
+                                <a href="{{ url_for('student_data', course_id=course.crs_id) }}"
+                                    class="btn btn-warning">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
                                 <!-- Remove Course Form -->
-                                <form action="{{ url_for('remove_course', course_id=course.crs_id) }}" method="POST" style="display: inline;">
+                                <form action="{{ url_for('remove_course', course_id=course.crs_id) }}" method="POST"
+                                    style="display: inline;">
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i> Remove
                                     </button>
@@ -231,43 +269,57 @@
                 </div>
             </div>
             {% endfor %}
+
         </div>
 
         <!-- Modal for Adding a Course -->
-        <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addCourseModalLabel"><i class="fas fa-plus-circle"></i> Add New Course</h5>
+                        <h5 class="modal-title" id="addCourseModalLabel"><i class="fas fa-plus-circle"></i> Add New
+                            Course</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="addCourseForm" method="POST" action="{{ url_for('add_course') }}">
+                        <form id="addCourseForm" action="{{ url_for('add_course') }}" method="POST">
                             <div class="form-group">
-                                <label for="course_name">Course Name:</label>
-                                <input type="text" class="form-control" id="course_name" name="course_name" required>
+                                <label for="c_name">Course Name</label>
+                                <input type="text" class="form-control" id="c_name" name="c_name" required>
                             </div>
                             <div class="form-group">
-                                <label for="description">Description:</label>
-                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                                <label for="description">Course Description</label>
+                                <textarea class="form-control" id="description" name="description" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Course Duration (in weeks)</label>
+                                <input type="number" class="form-control" id="duration" name="duration" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fees">Course Fees</label>
+                                <input type="number" class="form-control" id="fees" name="fees" required>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="document.getElementById('addCourseForm').submit();">Add Course</button>
+                        <button type="button" class="btn btn-primary"
+                            onclick="document.getElementById('addCourseForm').submit();">Add Course</button>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
+        <div class="footer">
+            <p>&copy; 2024 <a href="#">AL Madina Academy</a>. All rights reserved.</p>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
